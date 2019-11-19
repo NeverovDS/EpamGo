@@ -13,16 +13,16 @@ type Point struct {
 	x, y int
 }
 
-func (NewPointX *Square) End() Point {
-	x2 := NewPointX.start.x + NewPointX.a
-	y2 := NewPointX.start.y - NewPointX.a
+func (X *Square) End() Point {
+	x2 := X.start.x + X.a
+	y2 := X.start.y - X.a
 	return Point{x2, y2}
 }
-func (PerimeterDo *Square) Perimeter() int {
-	return PerimeterDo.a * 4
+func (X *Square) Perimeter() int {
+	return X.a * 4
 }
-func (AreaDo *Square) Area() int {
-	return AreaDo.a * AreaDo.a
+func (X *Square) Area() int {
+	return X.a * X.a
 }
 
 func main() {
