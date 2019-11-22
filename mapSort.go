@@ -1,0 +1,28 @@
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func printSorted( m1 map[int]string) map[int]string {
+
+	var keys []int
+	for k := range m1 {
+		keys = append(keys, k)
+	}
+	sort.Ints(keys)
+		return m1
+
+}
+
+func main() {
+
+	m := map[int]string{10: "a", 0: "b", 250: "c" , 500: "d"}
+
+		fmt.Println(printSorted(m))
+
+	}
+
+
+
