@@ -11,37 +11,37 @@ type Interface interface {
 	Len() int
 	Less(i, j int) bool
 	Swap(I, j int)
-	}
+}
 
 type Person struct {
 	firstName string
 	lastName  string
 	birthDay  time.Time
-	}
+}
 
 type People []Person
 
 func (p People) Len() int {
 	return len(p)
-	}
+}
 func (p People) Less(i, j int) bool {
+	if p[i].birthDay.Sub(p[j].birthDay) > 0 {
+		return true
+	}
+	if p[i].birthDay.Sub(p[j].birthDay) < 0 {
+		return false
+	}
 	if p[i].firstName < p[j].firstName {
 		return true
 	}
 	if p[i].firstName > p[j].firstName {
 		return false
 	}
-	if p[i].lastName < p[j].lastName {
-		return true
-	}
-	if p[i].lastName > p[j].lastName {
-		return false
-	}
-	return p[i].birthDay.Sub(p[j].birthDay) > 0
-	}
+	return p[i].lastName < p[j].lastName
+}
 func (p People) Swap(i, j int) {
 	p[i], p[j] = p[j], p[i]
-	}
+}
 
 func main() {
 	ivanIvanovDate, err := time.Parse("2006-Jan-02", "2005-Aug-10")
