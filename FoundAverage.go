@@ -1,20 +1,23 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func average(arr [] int) float64 {
-	 Sum  := 0
-	N := len(arr)
-	for i := 0; i < len(arr) ; i++ {
-	Sum += arr[i]
-	}
-	return float64(Sum) / float64(N)
-	}
-	func main() {
+	sum := 0
+	n := len(arr)
+	if len(arr) != 0 {
 
-	 SomeArray := [] int{4,2,3,1}
-	 a := average(SomeArray)
-
-		fmt.Println(a)
+		for i := 0; i < len(arr); i++ {
+			sum += arr[i]
+		}
 	}
+	return float64(sum) / float64(n)
+}
 
+func main() {
+	someArray := [] int{1, 1, 2, 3}
+	a := average(someArray)
+	fmt.Println(a)
+}
