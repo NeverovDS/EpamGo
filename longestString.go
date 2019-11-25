@@ -6,12 +6,12 @@ import (
 )
 
 func max(slice []string) string {
-	count := 0
+	longestWordLen := 0
 	longestWord := ""
 	for i := 0; i < len(slice); i++ {
 
-		if count < utf8.RuneCountInString(slice[i]) {
-			count = utf8.RuneCountInString(slice[i])
+		if longestWordLen < utf8.RuneCountInString(slice[i]) {
+			longestWordLen = utf8.RuneCountInString(slice[i])
 			longestWord = slice[i]
 		}
 	}
