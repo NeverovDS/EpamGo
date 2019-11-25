@@ -5,21 +5,18 @@ import (
 	"sort"
 )
 
-func printSorted(m1 map[int]string) {
-
+func printSorted(someMap map[int]string) {
 	var keys []int
-	for k := range m1 {
-		keys = append(keys, k)
+	for v := range someMap {
+		keys = append(keys, v)
 	}
 	sort.Ints(keys)
-	for _, k := range keys {
-		fmt.Println(m1[k])
+	for _, v := range keys {
+		fmt.Println(someMap[v])
 	}
 }
 
 func main() {
-
-	m := map[int]string{10: "a", 0: "b", 250: "c", 500: "d"}
-	printSorted(m)
-
+	input := map[int]string{10: "a", 0: "b", 250: "c", 500: "d"}
+	printSorted(input)
 }
