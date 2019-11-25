@@ -1,18 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"unicode/utf8"
+)
 
 func max(slice []string) string {
-	longestWord := 0
-	b := ""
+	count := 0
+	longestWord := ""
 	for i := 0; i < len(slice); i++ {
 
-		if longestWord < len(slice[i]) {
-			longestWord = len(slice[i])
-			b = slice[i]
+		if count < utf8.RuneCountInString(slice[i]) {
+			count = utf8.RuneCountInString(slice[i])
+			longestWord = slice[i]
 		}
 	}
-	return b
+	return longestWord
 
 }
 
