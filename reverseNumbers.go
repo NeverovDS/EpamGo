@@ -4,17 +4,17 @@ import (
 	"fmt"
 )
 
-func reverse(sl []int64) []int64 {
-	k := make([]int64, 0)
+func reverseSlice(slice []int64) []int64 {
+	result := make([]int64, 0)
 
-	for i, j := int64(0), int64(len(sl)-1); i < j; i, j = i+1, j-1 {
-		sl[i], sl[j] = sl[j], sl[i]
-		k = append(sl)
+	for i, j := int64(0), int64(len(slice)-1); i < j; i, j = i+1, j-1 {
+		slice[i], slice[j] = slice[j], slice[i]
+		result = append(slice)
 	}
-	return k
+	return result
 }
 func main() {
-	s := []int64{1, 2, 5, 15, 325, 21, 523, 14, 16, 24, 0}
-	d := reverse(s)
-	fmt.Println(d)
+	input := []int64{1, 2, 5, 15, 325, 21, 523, 14, 16, 24, 0}
+	output := reverseSlice(input)
+	fmt.Println(output)
 }
