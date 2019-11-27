@@ -5,7 +5,6 @@ import (
 	"math"
 )
 
-
 type Figure interface {
 	area() float64
 	perimeter() float64
@@ -19,26 +18,25 @@ type Circle struct {
 }
 
 func (square Square) perimeter() float64 {
-	square.side = 4 * square.side
-	return square.side
+	perim := 4 * square.side
+	return perim
 }
 func (square Square) area() float64 {
-	square.side = square.side * square.side
-	return square.side
+	ar := square.side * square.side
+	return ar
 }
 func (circle Circle) area() float64 {
-	circle.r = circle.r * circle.r * math.Pi
-	return circle.r
+	ar := circle.r * circle.r * math.Pi
+	return ar
 }
 func (circle Circle) perimeter() float64 {
-	circle.r = circle.r * 2 * math.Pi
-	return circle.r
+	perim := circle.r * 2 * math.Pi
+	return perim
 }
 
 func main() {
 	var s Figure = Square{5}
 	var c Figure = Circle{3}
-
 	fmt.Println(s.area(), s.perimeter())
 	fmt.Println(c.area(), c.perimeter())
 
