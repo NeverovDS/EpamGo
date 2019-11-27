@@ -7,12 +7,6 @@ import (
 	"time"
 )
 
-type Interface interface {
-	Len() int
-	Less(i, j int) bool
-	Swap(I, j int)
-}
-
 type Person struct {
 	firstName string
 	lastName  string
