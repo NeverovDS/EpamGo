@@ -18,20 +18,20 @@ type Circle struct {
 }
 
 func (square Square) perimeter() float64 {
-	perim := 4 * square.side
-	return perim
+	return 4 * square.side
+
 }
 func (square Square) area() float64 {
-	ar := square.side * square.side
-	return ar
+	return square.side * square.side
+
 }
 func (circle Circle) area() float64 {
-	ar := circle.r * circle.r * math.Pi
-	return ar
+	return circle.r * circle.r * math.Pi
+
 }
 func (circle Circle) perimeter() float64 {
-	perim := circle.r * 2 * math.Pi
-	return perim
+	return circle.r * 2 * math.Pi
+	
 }
 
 func main() {
