@@ -7,12 +7,12 @@ import (
 func average(arr [] int) float64 {
 	sum := 0
 	n := len(arr)
-	if len(arr) == 0 {
+	if n == 0 {
 		return 0
 	}
-	if len(arr) != 0 {
+	if n != 0 {
 
-		for i := 0; i < len(arr); i++ {
+		for i := 0; i < n; i++ {
 			sum += arr[i]
 		}
 	}
@@ -20,7 +20,7 @@ func average(arr [] int) float64 {
 }
 
 func main() {
-	someArray := [] int{}
+	someArray := [] int{12, 2, 3}
 	a := average(someArray)
 	fmt.Println(a)
 }
