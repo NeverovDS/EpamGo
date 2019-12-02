@@ -10,11 +10,8 @@ func average(arr [] int) float64 {
 	if n == 0 {
 		return 0
 	}
-	if n != 0 {
-
-		for i := 0; i < n; i++ {
-			sum += arr[i]
-		}
+	for i := 0; i < n; i++ {
+		sum += arr[i]
 	}
 	return float64(sum) / float64(n)
 }
