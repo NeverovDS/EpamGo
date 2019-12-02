@@ -5,8 +5,8 @@ import (
 )
 
 func reverseSlice(slice []int64) []int64 {
-	result := make([]int64, 0)
-	result = slice
+	result := make([]int64, len(slice))
+	copy(result, slice)
 	for i, j := int64(0), int64(len(result)-1); i < j; i, j = i+1, j-1 {
 		result[i], result[j] = result[j], result[i]
 
