@@ -1,10 +1,8 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"strconv"
-	"strings"
 )
 
 func main() {
@@ -14,13 +12,8 @@ func main() {
 }
 
 func myStrToInt(str string) (int, error) {
-	nonFractionalPart := strings.Split(str, ".")
-	x, err := strconv.Atoi(nonFractionalPart[0])
 	if str == "" {
-		return 1, errors.New("empty string")
+		return 1, nil
 	}
-	if x == 0 || err != nil {
-		return 2, errors.New("bad string")
-	}
-	return strconv.Atoi(nonFractionalPart[0])
+	return strconv.Atoi(str)
 }

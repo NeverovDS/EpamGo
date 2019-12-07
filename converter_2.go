@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 )
 
@@ -9,11 +8,10 @@ func myStrToInt2(str string) (int, error) {
 	var b int
 	x, err := fmt.Sscanf(str, "%d", &b)
 	if str == "" {
-		return 1, errors.New("empty string")
+		return 1, error(nil)
 	}
 	if x == 0 || err != nil {
-		return 2, errors.New("bad string")
+		return 2, error(nil)
 	}
-	fmt.Sscanf(str, "%d", &b)
 	return b, nil
 }
