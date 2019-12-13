@@ -2,18 +2,19 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"log"
 	"net/http"
 	"time"
 )
 
-
-type  RequestInfo struct {
-	Host string `json:"host"`
-	User_agent string `json:"user_agent"`
-	Request_uri string `json:"request_uri"`
-	Headers  http.Header`json:"headers"`
+type RequestInfo struct {
+	Host       string      `json:"host"`
+	UserAgent  string      `json:"user_agent"`
+	RequestUri string      `json:"request_uri"`
+	Headers    http.Header `json:"headers"`
 }
+
 func main() {
 	handler := http.NewServeMux()
 	handler.HandleFunc("/Request", RequestHandler)
@@ -28,17 +29,19 @@ func main() {
 	log.Fatal(s.ListenAndServe())
 }
 
-func RequestHandler(w http.ResponseWriter, r *http.Request)  {
+func RequestHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	request := RequestInfo{
-		Host:r.Host,
-		User_agent:r.UserAgent(),
-		Request_uri:r.RequestURI,
-		Headers:r.Header,
-		}
+		Host:       r.Host,
+		UserAgent:  r.UserAgent(),
+		RequestUri: r.RequestURI,
+		Headers:    r.Header,
+	}
 
-	requestJson, _ := json.Marshal(request)
+	requestJson, err := json.Marshal(request)
+	if err != nil {
+		errors.New("Shit happens.You are fucked up")
+	}
 	w.WriteHeader(http.StatusOK)
 	w.Write(requestJson)
 }
-
