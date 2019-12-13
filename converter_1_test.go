@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"reflect"
 	"strconv"
 	"testing"
@@ -17,7 +18,7 @@ func Test_myStrToInt(t *testing.T) {
 }
 func Test_myStrToIntV2(t *testing.T) {
 	testString := ""
-	expected, nil := 1, error(nil)
+	expected, nil := 0, errors.New("empty line")
 	actual, nil := myStrToInt(testString)
 	if !reflect.DeepEqual(expected, actual) {
 		t.Errorf("Not equal\nexpected - %v\nactual - %v", expected, actual)
@@ -26,7 +27,7 @@ func Test_myStrToIntV2(t *testing.T) {
 }
 func Test_myStrToIntV3(t *testing.T) {
 	testString := "jSBV"
-	expected, nil := 0, error(nil)
+	expected, nil := strconv.Atoi(testString)
 	actual, nil := myStrToInt(testString)
 	if !reflect.DeepEqual(expected, actual) {
 		t.Errorf("Not equal\nexpected - %v\nactual - %v", expected, actual)

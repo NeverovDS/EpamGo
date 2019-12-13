@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"strconv"
 )
@@ -13,7 +14,7 @@ func main() {
 
 func myStrToInt(str string) (int, error) {
 	if str == "" {
-		return 1, nil
+		return 0, errors.New("empty line")
 	}
 	return strconv.Atoi(str)
 }
