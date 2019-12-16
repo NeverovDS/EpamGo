@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 )
+
 func hello(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
 		http.Error(w, "404 not found.", http.StatusNotFound)
@@ -25,8 +27,16 @@ func hello(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Post from website! r.PostFrom = %v\n", r.PostForm)
 		name := r.FormValue("name")
 		address := r.FormValue("address")
-		fmt.Fprintf(w, "Name = %s\n", name)
-		fmt.Fprintf(w, "Address = %s\n", address)
+		User, err := r.Cookie("User")
+		if err != nil {
+			User = &http.Cookie{
+				Name:  name,
+				Value: address,
+			}
+			http.SetCookie(w, User)
+		}
+		io.WriteString(w, User.String())
+
 	default:
 		fmt.Fprintf(w, "Sorry, only GET and POST methods are supported.")
 	}
