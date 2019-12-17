@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"errors"
 	"log"
 	"net/http"
 	"time"
@@ -40,7 +39,7 @@ func RequestHandler(w http.ResponseWriter, r *http.Request) {
 
 	requestJson, err := json.Marshal(request)
 	if err != nil {
-		errors.New("Shit happens.You are fucked up")
+		http.Error(w,"something went wrong with parsing",http.StatusBadRequest)
 	}
 	w.WriteHeader(http.StatusOK)
 	w.Write(requestJson)
